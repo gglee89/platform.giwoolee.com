@@ -28,6 +28,8 @@ MaterialUI
 **Movies categories**  
 http://www.omdbapi.com/
 
+Obs.: For testing purposes, the free `apikey` can be found in the `.env` file with the entry `REACT_APP_OMDB_API_KEY`
+
 # How to start
 
 - For production access:
