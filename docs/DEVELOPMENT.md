@@ -21,7 +21,7 @@
 10. [x] Add `card box component` for movies
 11. [x] Add `button box component` for `Add to favorites` functionality
 12. [x] Add `movies filtering` functionality
-13. [] (Asynchonous API request) Fetch movies from OMDB with search key
+13. [x] (Asynchonous API request) Fetch movies from OMDB with search key
 
 # Enhancement good-to-have app features
 

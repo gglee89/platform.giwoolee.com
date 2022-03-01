@@ -43,22 +43,29 @@ http://www.omdbapi.com/
 
 # Development strategy
 
+A more detailed explained on the steps I've taken to go about the development of the application.  
 [Link to the file DEVELOPMENT.md](./docs/DEVELOPMENT.md)
 
 # Tips
 
-- [] Write a good README with basic information (e.g.: how to start the project and how to build it);
+- [x] Write a good README with basic information (e.g.: how to start the project and how to build it);
 - [] There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
 - [] Feel free to work and improve on the available designs. Think of them as guidelines.
 - [] There's a "like" button on the details page. It would be great if this information is persistent!
-- [] Prefer to use a css methodology, such as BEM, ITCSS, etc;
-- [] Use any CSS extension like LESS or SASS;
-- [] Asking questions is good. We will not penalize you for asking questions;
+  - I was going to use `localStorage` to save users' "preferences". But due to the time constraint I've skipped.
+- [x] Prefer to use a css methodology, such as BEM, ITCSS, etc;
+- [x] Use any CSS extension like LESS or SASS;
+  - I've used MaterialUI instead.
+- [x] Asking questions is good. We will not penalize you for asking questions;
+  - Didn't have enough time to ask questions.
+  - I'd ask questions on if whether there's a need to have this application deployed with (Dev, Staging, QA, and Production) environments.
 - [] The API server is sometimes slow, so think about loading and empty states throughout your application;
+  - Just handled asynchronous calls
 - [] We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
 - [] Unit testing will be greatly valued;
-- [] The git history will be evaluated;
-- [] Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
+  - Couldn't expand much on this due to the time.
+- [x] The git history will be evaluated;
+- [x] Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
 
 # Author
 
