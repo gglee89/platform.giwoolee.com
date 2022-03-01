@@ -5,7 +5,7 @@
 1. [x] Setup ReactJS app w/ Typescript as a single page application (SPA)
 2. [x] Setup `react-redux` and `redux` store
    - note: This is NOT fully necessary for this app current scale.
-3. [] Setup basic **action/reducer** for movies
+3. [x] Setup basic **action** and **reducer** for movies
    - **src/features/movies**
 4. [] Setup API access module in services **(src/services)**
 5. [] Setup pages **Web Components**
