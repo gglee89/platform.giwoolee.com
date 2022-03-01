@@ -31,11 +31,15 @@ http://www.omdbapi.com/
 # How to start
 
 - For production access:
-  - [TBD] `Open browser` to access the link https://**\*\*\***.**\*\*\***
+- [TBD] `Open browser` to access the link https://**\*\*\***.**\*\*\***
 - For development access:
-  - `git clone` this repository into your local
-  - Run `npm install` to install all node packages in `package.json`
-  - Run `npm start`
+- `git clone` this repository into your local
+- Run `npm install` to install all node packages in `package.json`
+- Run `npm start`
+
+# How to run tests
+
+- Run `npm run test` to execute `react-scripts test`
 
 # Development strategy
 

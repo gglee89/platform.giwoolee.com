@@ -15,11 +15,11 @@
    - Home page (eg. <URL>/)
    - Movie page (eg. <URL>/movies/<movie-id>)
    - Not Found page (eg. <URL>/\*)
-7. [] Setup `axios` with maybe `redux-thunk`
-8. Implement basic unit testing functionality for with Jest for `pages` and `components`
-9. Add `search box component` for movie search
-10. Add `card box component` for movies
-11. Add `button box component` for `Add to favorites` functionality
+7. [x] Setup `axios` with maybe `redux-thunk`
+8. [x] Implement basic unit testing functionality for with Jest for `pages` and `components`
+9. [] Add `search box component` for movie search
+10. [] Add `card box component` for movies
+11. [] Add `button box component` for `Add to favorites` functionality
 
 # Enhancement good-to-have app features
 
