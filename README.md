@@ -37,7 +37,22 @@ http://www.omdbapi.com/
 - Run `npm install` to install all node packages in `package.json`
 - Run `npm start`
 
-# How to run tests
+# How it should look
+
+#### [Home Page - A (With no results)]
+
+<img src="https://user-images.githubusercontent.com/16644017/156199587-c90d1f8a-43f9-41cd-812b-da6d82521990.png" data-canonical-src="https://user-images.githubusercontent.com/16644017/156199587-c90d1f8a-43f9-41cd-812b-da6d82521990.png" width="600" height="400" />
+
+#### [Home Page - B]
+
+<img src="https://user-images.githubusercontent.com/16644017/
+156199776-f30e40ea-12b0-4bab-887b-f1eb501b2dc5.png" data-canonical-src="https://user-images.githubusercontent.com/16644017/156199776-f30e40ea-12b0-4bab-887b-f1eb501b2dc5.png" width="600" height="400" />
+
+#### [Movie Detail]
+
+<img src="https://user-images.githubusercontent.com/16644017/156200501-9845b3f4-e17e-4d21-8cb3-d236ba8b7e6c.png" data-canonical-src="https://user-images.githubusercontent.com/16644017/156200501-9845b3f4-e17e-4d21-8cb3-d236ba8b7e6c.png" width="600" height="400" />
+
+# How to run tests (TODO - pending)
 
 - Run `npm run test` to execute `react-scripts test`
 
