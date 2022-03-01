@@ -3,7 +3,7 @@
 # Foundational must-have app features
 
 1. [x] Setup ReactJS app w/ Typescript as a single page application (SPA)
-2. [] Setup `react-redux` and `redux` store
+2. [x] Setup `react-redux` and `redux` store
    - note: This is NOT fully necessary for this app current scale.
 3. [] Setup basic **action/reducer** for movies
    - **src/features/movies**
