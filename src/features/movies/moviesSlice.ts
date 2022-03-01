@@ -11,36 +11,6 @@ export interface Movie {
     Poster: string
 }
 
-// Schema from gotten on from OMDB's API
-// by using the ID or Title parameter in query
-export interface MovieDetail {
-    Title: string
-    Year: number
-    rated: string | 'PG-13'
-    released: Date
-    runtime: string
-    genre: string       // TODO: Use enum
-    director: string
-    writer: string
-    actors: string
-    plot: string
-    language: string    // TODO: Use enum
-    country: string     // TODO: Use enum
-    awards: string
-    poster: string
-    ratings: { source: string, value: string }[]
-    metascore: number
-    imdbrating: number
-    imdbvotes: number
-    imdbid: string
-    type: string        // TODO: Use enum
-    dvd: Date
-    boxOffice: number
-    production: string
-    website: string
-    response: boolean
-}
-
 export interface MoviesState {
     loading: boolean
     data: Movie[]

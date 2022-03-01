@@ -1,0 +1,1 @@
+export { default as MovieDetailReducer } from './movieDetailSlice'

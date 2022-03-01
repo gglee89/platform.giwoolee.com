@@ -24,7 +24,7 @@ const CardBox: React.FC<Movie> = ({ Title, Year, Poster, imdbID, Type }) => {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     border: 'none',
-                    height: 300,
+                    height: 450,
                     '&:hover': {
                         backgroundColor: theme.palette.primary.dark,
                         color: theme.palette.primary.main,

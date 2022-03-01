@@ -39,15 +39,15 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <AppLayout>
-        <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/movies/:movieId" element={<Movies />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-        </BrowserRouter>
-      </AppLayout>
+      <BrowserRouter>
+        <AppLayout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies/:movieId" element={<Movies />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AppLayout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
