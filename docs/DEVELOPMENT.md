@@ -8,7 +8,7 @@
 3. [x] Setup basic **action** and **reducer** for movies
    - **src/features/movies**
 4. [x] Setup API access module in services **(src/services)**
-5. [] Setup pages **Web Components**
+5. [x] Setup pages **Web Components**
    - Home page (eg. src/pages/Home)
    - Movie page (eg. src/pages/Movies)
 6. [] Setup `react-router-dom` to handle app routing
