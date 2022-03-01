@@ -86,6 +86,6 @@ const moviesSlice = createSlice({
     }
 })
 
-export const getMovies = (state: RootState) => state.movies.data
+export const getMovies = (state: RootState) => state.movies
 
 export default moviesSlice.reducer

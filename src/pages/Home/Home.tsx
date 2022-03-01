@@ -9,40 +9,88 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { fetchMovies, getMovies } from '../../features/movies/moviesSlice'
 
 // MUI
-import { Container, Grid } from '@mui/material'
+import { Box, Grid, CircularProgress, Typography } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+
+// Assets
+import EmptyStateImage from '../../assets/illustrations/illustration-empty-state.png'
 
 const Home: React.FC = () => {
     const [searchKey, setSearchKey] = useState('')
-    const movies = useAppSelector(getMovies)
+    const { loading, data: movies, error } = useAppSelector(getMovies)
+    const theme = useTheme()
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        if (movies.length === 0) dispatch(fetchMovies({ s: 'Harry Potter' }))
-    }, [])
+        dispatch(fetchMovies({ s: searchKey }))
+    }, [searchKey])
 
     return (
-        <Container maxWidth="md">
-            <Search searchKey={searchKey} updateSearchKey={setSearchKey} />            
-            <Grid container spacing={2} sx={{ mt: 5 }}>
-                {
-                    movies
-                        .filter(item => item.Type === "movie" && item.Title.toLowerCase().includes(searchKey.toLowerCase()))
-                        .map(({ Title, Year, Poster, imdbID, Type }, idx) => {
-                        return (
-                            <Grid item key={idx} xs={3}>
-                                <CardBox                                    
-                                    Title={Title}
-                                    Year={Year}
-                                    Poster={Poster}
-                                    imdbID={imdbID}
-                                    Type={Type}
-                                />
-                            </Grid>
-                        )
-                    })
-                }                
-            </Grid>
-        </Container>
+        <React.Fragment>
+            <Search searchKey={searchKey} updateSearchKey={setSearchKey} />
+            {
+                !movies ? (
+                    <Box
+                        sx={{
+                            alignItems: 'center',
+                            color: theme.palette.primary.main,
+                            display: 'flex',
+                            flex: 1,
+                            flexDirection: 'column',
+                            height: '100%',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <img src={EmptyStateImage} />
+                        <Typography variant="h6" color={theme.palette.primary.main}>Don't know what to search?</Typography>
+                        <Typography variant="subtitle1" color={theme.palette.primary.light}>Here's an offer you can't refuse</Typography>
+                    </Box>
+                ) : (
+                    loading ? (
+                        <Box
+                            sx={{
+                                alignItems: 'center',
+                                color: theme.palette.primary.main,
+                                display: 'flex',
+                                flex: 1,
+                                flexDirection: 'column',
+                                height: '100%',
+                                justifyContent: 'center'
+                            }}
+                            >
+                                <CircularProgress />
+                                <Typography
+                                    variant='subtitle1'
+                                    color={theme.palette.success.main}
+                                >
+                                    Loading...
+                                </Typography>
+                        </Box>
+                    ): (
+                        <Grid container spacing={2} sx={{ mt: 0.5 }}>
+                            {
+                                movies
+                                    .filter(item => item.Type === "movie")
+                                    .map(({ Title, Year, Poster, imdbID, Type }, idx) => {
+                                    return (
+                                        <Grid item key={idx} xs={3}>
+                                            <CardBox                                    
+                                                Title={Title}
+                                                Year={Year}
+                                                Poster={Poster !== 'N/A' ? Poster : `https://fakeimg.pl/200x300`
+}
+                                                imdbID={imdbID}
+                                                Type={Type}
+                                            />
+                                        </Grid>
+                                    )
+                                })
+                            }                
+                        </Grid>                                
+                    )
+                )
+            }            
+        </React.Fragment>
     )
 }
 

@@ -13,27 +13,25 @@ const Search: React.FC<SearchProps> = ({ searchKey, updateSearchKey }) => {
     const theme = useTheme()
 
     return (
-        <Box
-            component="form"
+        <TextField
             autoComplete="off"
-            sx={{                
-                '& > :not(style)': {
-                    my: 1
+            variant="outlined"
+            value={searchKey}
+            onChange={e => updateSearchKey(e.target.value)}
+            placeholder="Search movies..."
+            sx={{
+                background: theme.palette.primary.main,
+                "& .MuiOutlinedInput-root:hover": {
+                    "& > fieldset": {
+                        borderColor: theme.palette.warning.main,
+                        borderRadius: '0px'
+                    }
                 }
             }}
-        >
-            <TextField
-                variant="outlined"
-                value={searchKey}
-                onChange={e => updateSearchKey(e.target.value)}
-                sx={{
-                    background: theme.palette.primary.main,
-                }}
-                color="primary"
-                margin="normal"
-                fullWidth
-            />
-        </Box>  
+            color="primary"
+            margin="normal"
+            fullWidth
+        />
     )
 }
 

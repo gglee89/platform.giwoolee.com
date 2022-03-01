@@ -15,6 +15,8 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
             maxWidth="lg"
             sx={{
                 background: theme.palette.primary.dark,
+                display: 'flex',
+                flexDirection: 'column',
                 height: '100%',
                 minHeight: '100vh',
                 paddingBottom: theme.spacing(4)
