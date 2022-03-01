@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 // Actions
@@ -33,6 +33,7 @@ const bull = (
 const Movies: React.FC = () => {
     const { movieId } = useParams()
     const theme = useTheme()
+    const [isFavorite, setIsFavorite] = useState(false)
     const dispatch = useAppDispatch()
     const { loading, data: movieDetail } = useAppSelector(state => state.movieDetail)
 
@@ -75,7 +76,7 @@ const Movies: React.FC = () => {
                     justifyContent: 'center'
                 }}
             >        
-                <img src={EmptyStateImage} />
+                <img src={EmptyStateImage} alt="Empty state" />
                 <Typography variant="h6" color={theme.palette.primary.main}>Don't know what to search?</Typography>
                 <Typography variant="subtitle1" color={theme.palette.primary.light}>Here's an offer you can't refuse</Typography>                
             </Box>
@@ -199,7 +200,12 @@ const Movies: React.FC = () => {
                         justifyContent="center"
                         mr={theme.spacing(2)}    
                         pr={theme.spacing(1)}
-                        sx={{
+                        sx={isFavorite ? {
+                            border: `1px solid ${theme.palette.secondary.light}`,
+                            backgroundColor: theme.palette.error.main,
+                            cursor: 'pointer',
+                            paddingLeft: theme.spacing(1)
+                        } : {
                             border: `1px solid ${theme.palette.secondary.light}`,
                             borderRadius: 4,
                             '&:hover': {
@@ -207,17 +213,27 @@ const Movies: React.FC = () => {
                                 cursor: 'pointer'
                             }
                         }}
+                        onClick={() => setIsFavorite(!isFavorite)}
                     >
-                        <Box
-                            display="flex"         
-                            px={theme.spacing(1.5)}
-                            mr={theme.spacing(1)}                            
-                        >
+                        
+                        <>
                             {
-                                <HeartIconSVG width={theme.spacing(2)} />
-                            }
-                        </Box>
-                        <Typography color="primary" fontSize={14}>Add to favourites</Typography>
+                                isFavorite ? (
+                                    <Typography color="primary" fontSize={14}>Added</Typography>
+                                ) : (
+                                    <>
+                                        <Box
+                                            display="flex"         
+                                            px={theme.spacing(1.5)}
+                                            mr={theme.spacing(1)}                            
+                                        >
+                                            <HeartIconSVG width={theme.spacing(2)} />
+                                        </Box>
+                                        <Typography color="primary" fontSize={14}>Add to favourites</Typography>
+                                    </>
+                                )
+                            }   
+                        </>                                             
                     </Box>
                 </Box>
                 <Box mt={theme.spacing(4)}>

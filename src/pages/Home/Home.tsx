@@ -42,7 +42,7 @@ const Home: React.FC = () => {
                             justifyContent: 'center'
                         }}
                     >
-                        <img src={EmptyStateImage} />
+                        <img src={EmptyStateImage} alt="Empty state" />
                         <Typography variant="h6" color={theme.palette.primary.main}>Don't know what to search?</Typography>
                         <Typography variant="subtitle1" color={theme.palette.primary.light}>Here's an offer you can't refuse</Typography>
                     </Box>
