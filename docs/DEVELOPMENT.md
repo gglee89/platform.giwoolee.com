@@ -11,7 +11,7 @@
 5. [x] Setup pages **Web Components**
    - Home page (eg. src/pages/Home)
    - Movie page (eg. src/pages/Movies)
-6. [] Setup `react-router-dom` to handle app routing
+6. [x] Setup `react-router-dom` to handle app routing
    - Home page (eg. <URL>/)
    - Movie page (eg. <URL>/movies/<movie-id>)
    - Not Found page (eg. <URL>/\*)
