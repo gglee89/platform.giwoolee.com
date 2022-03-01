@@ -1,7 +1,7 @@
 import React from 'react'
 
 // MUI
-import { Box, Card, CardActionArea, CardContent, CardMedia, IconButton, Typography } from '@mui/material'
+import { Box, Card, CardContent, IconButton, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 // Assets
@@ -48,7 +48,13 @@ const CardBox: React.FC<Movie> = ({ Title, Year, Poster, imdbID, Type }) => {
                     }}
                 >
                     <Box sx={{ textAlign: 'end' }}>
-                        <IconButton>
+                        <IconButton
+                            sx={{
+                                '&:hover': {
+                                    backgroundColor: theme.palette.error.main
+                                }
+                            }}
+                        >
                             <HeartIconSVG />
                         </IconButton>
                     </Box>

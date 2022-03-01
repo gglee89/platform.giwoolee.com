@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Components
 import Search from '../../components/Search'
@@ -17,7 +18,7 @@ import EmptyStateImage from '../../assets/illustrations/illustration-empty-state
 
 const Home: React.FC = () => {
     const [searchKey, setSearchKey] = useState('')
-    const { loading, data: movies, error } = useAppSelector(getMovies)
+    const { loading, data: movies } = useAppSelector(getMovies)
     const theme = useTheme()
     const dispatch = useAppDispatch()
 
@@ -73,15 +74,25 @@ const Home: React.FC = () => {
                                     .filter(item => item.Type === "movie")
                                     .map(({ Title, Year, Poster, imdbID, Type }, idx) => {
                                     return (
-                                        <Grid item key={idx} xs={3}>
-                                            <CardBox                                    
-                                                Title={Title}
-                                                Year={Year}
-                                                Poster={Poster !== 'N/A' ? Poster : `https://fakeimg.pl/200x300`
-}
-                                                imdbID={imdbID}
-                                                Type={Type}
-                                            />
+                                        <Grid
+                                            item
+                                            key={idx}
+                                            xs={3}>
+                                            <Link
+                                                to={`/movies/${imdbID}`}
+                                                style={{
+                                                    textDecoration: 'none'
+                                                }}
+                                            >
+                                                <CardBox                                    
+                                                    Title={Title}
+                                                    Year={Year}
+                                                    Poster={Poster !== 'N/A' ? Poster : `https://fakeimg.pl/200x300`
+    }
+                                                    imdbID={imdbID}
+                                                    Type={Type}
+                                                />
+                                            </Link>
                                         </Grid>
                                     )
                                 })
