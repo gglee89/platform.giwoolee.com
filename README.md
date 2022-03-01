@@ -47,7 +47,7 @@ http://www.omdbapi.com/
 - [] There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
 - [] Feel free to work and improve on the available designs. Think of them as guidelines.
 - [] There's a "like" button on the details page. It would be great if this information is persistent!
-  Prefer to use a css methodology, such as BEM, ITCSS, etc;
+- [] Prefer to use a css methodology, such as BEM, ITCSS, etc;
 - [] Use any CSS extension like LESS or SASS;
 - [] Asking questions is good. We will not penalize you for asking questions;
 - [] The API server is sometimes slow, so think about loading and empty states throughout your application;
