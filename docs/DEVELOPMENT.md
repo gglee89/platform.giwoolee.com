@@ -17,9 +17,11 @@
    - Not Found page (eg. <URL>/\*)
 7. [x] Setup `axios` with maybe `redux-thunk`
 8. [x] Implement basic unit testing functionality for with Jest for `pages` and `components`
-9. [] Add `search box component` for movie search
-10. [] Add `card box component` for movies
-11. [] Add `button box component` for `Add to favorites` functionality
+9. [x] Add `search box component` for movie search
+10. [x] Add `card box component` for movies
+11. [x] Add `button box component` for `Add to favorites` functionality
+12. [x] Add `movies filtering` functionality
+13. [] (Asynchonous API request) Fetch movies from OMDB with search key
 
 # Enhancement good-to-have app features
 

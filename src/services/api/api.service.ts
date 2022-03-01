@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export const getRequest = async (reqBody: any) => {
+export const getRequest = async (reqBody: { [key: string]: string }) => {
     const { data } = await axios.get(
-        `${process.env.OMDB_API_URL}`,
+        `${process.env.REACT_APP_OMDB_API_URL}`,
         {
             params: {
-                apikey: process.env.OMDB_API_KEY,
+                apikey: process.env.REACT_APP_OMDB_API_KEY,
                 ...reqBody,
             },
             headers: {

@@ -6,9 +6,9 @@ import { RootState } from '../../app/store'
 export interface Movie {
     Title: string
     Year: number
-    imdbId: string
-    type: string
-    poster: string
+    imdbID: string
+    Type: string
+    Poster: string
 }
 
 // Schema from gotten on from OMDB's API
@@ -49,12 +49,12 @@ export interface MoviesState {
 
 export const fetchMovies = createAsyncThunk<
     Movie[],
-    string,
+    { [key: string]: string },
     { rejectValue: Error }
->('movies/fetch', async (searchKey, thunkAPI: any) => {
+>('movies/fetch', async (reqBody, thunkAPI: any) => {
     try {
-        const { data } = await thunkAPI.extra.api.getRequest({ searchKey })
-        return await Promise.resolve(data)
+        const { Search } = await thunkAPI.extra.api.getRequest(reqBody)
+        return await Promise.resolve(Search)
     } catch (err) {
         const error = err as Error
         return thunkAPI.rejectWithValue(error)
