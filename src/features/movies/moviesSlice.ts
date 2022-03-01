@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 
+// Schema from gotten on from OMDB's API
+// by using the search parameter in query
 export interface Movie {
     Title: string
     Year: number
@@ -9,6 +11,8 @@ export interface Movie {
     poster: string
 }
 
+// Schema from gotten on from OMDB's API
+// by using the ID or Title parameter in query
 export interface MovieDetail {
     Title: string
     Year: number
@@ -49,7 +53,7 @@ export const fetchMovies = createAsyncThunk<
     { rejectValue: Error }
 >('movies/fetch', async (searchKey, thunkAPI: any) => {
     try {
-        const { data } = await thunkAPI.extra.api.getRequest(searchKey)
+        const { data } = await thunkAPI.extra.api.getRequest({ searchKey })
         return await Promise.resolve(data)
     } catch (err) {
         const error = err as Error

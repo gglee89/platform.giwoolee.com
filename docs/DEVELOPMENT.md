@@ -7,7 +7,7 @@
    - note: This is NOT fully necessary for this app current scale.
 3. [x] Setup basic **action** and **reducer** for movies
    - **src/features/movies**
-4. [] Setup API access module in services **(src/services)**
+4. [x] Setup API access module in services **(src/services)**
 5. [] Setup pages **Web Components**
    - Home page (eg. src/pages/Home)
    - Movie page (eg. src/pages/Movies)
