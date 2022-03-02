@@ -1,7 +1,7 @@
 import React from 'react'
 
 // MUI
-import { Box, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 interface SearchProps {

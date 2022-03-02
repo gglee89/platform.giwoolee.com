@@ -24,7 +24,7 @@ const Home: React.FC = () => {
 
     useEffect(() => {
         dispatch(fetchMovies({ s: searchKey }))
-    }, [searchKey])
+    }, [dispatch, searchKey])
 
     return (
         <React.Fragment>

@@ -39,7 +39,7 @@ const Movies: React.FC = () => {
 
     useEffect(() => {
         if (movieId) dispatch(fetchMovieDetail({ i: movieId }))
-    }, [movieId])
+    }, [dispatch, movieId])
 
     if (loading) {
         <Box
