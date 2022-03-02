@@ -1,6 +1,10 @@
 # movie-platform
 
-Movie selection platform with two simple pages. Home and Movie page (ie. Detail view)
+Movie selection platform with two simple pages.  
+Home and Movie page (ie. Detail view).
+
+To view in production:  
+https://platform.giwoolee.com
 
 # Deployment
 
@@ -32,12 +36,14 @@ Obs.: For testing purposes, the free `apikey` can be found in the `.env` file wi
 
 # How to start
 
-- For production access:
-- [TBD] `Open browser` to access the link https://**\*\*\***.**\*\*\***
-- For development access:
-- `git clone` this repository into your local
-- Run `npm install` to install all node packages in `package.json`
-- Run `npm start`
+- **For production access:**
+  - [TBD] `Open browser` to access the link:
+    - https://platform.giwoolee.com
+    - OR https://dr2gcdiov59vq.cloudfront.net
+- **For development access:**
+  - `git clone` this repository into your local
+  - Run `npm install` to install all node packages in `package.json`
+  - Run `npm start`
 
 # How it should look
 
