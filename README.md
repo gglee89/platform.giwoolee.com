@@ -1,4 +1,4 @@
-# movie-platform
+# platform.giwoolee.com
 
 Movie selection platform with two simple pages.  
 Home and Movie page (ie. Detail view).
