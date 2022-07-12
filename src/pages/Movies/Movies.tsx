@@ -1,65 +1,63 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
 // Actions
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { fetchMovieDetail } from '../../features/movieDetail/movieDetailSlice'
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { fetchMovieDetail } from "../../features/movieDetail/movieDetailSlice"
 
 // MUI
-import { Box, CircularProgress, Grid, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, CircularProgress, Grid, Typography } from "@mui/material"
+import { useTheme } from "@mui/material/styles"
 
 // Assets
-import EmptyStateImage from '../../assets/illustrations/illustration-empty-state.png'
-import { ReactComponent as IMDBLogo } from '../../assets/logos/logo-imdb.svg'
-import { ReactComponent as RottenTomatoesLogo } from '../../assets/logos/logo-rotten-tomatoes.svg'
-import { ReactComponent as HeartIconSVG } from '../../assets/icons/icon-heart-white.svg'
-
+import EmptyStateImage from "../../assets/illustrations/illustration-empty-state-min.png"
+import { ReactComponent as IMDBLogo } from "../../assets/logos/logo-imdb.svg"
+import { ReactComponent as RottenTomatoesLogo } from "../../assets/logos/logo-rotten-tomatoes.svg"
+import { ReactComponent as HeartIconSVG } from "../../assets/icons/icon-heart-white.svg"
 
 const bull = (
-  <Box
-    component="span"
-    sx={{
-        display: 'inline-block',
-        mx: 1,
-        mt: 0.4,
-        transform: 'scale(0.7)'
-    }}
-  >
-    •
-  </Box>
-);
+    <Box
+        component="span"
+        sx={{
+            display: "inline-block",
+            mx: 1,
+            mt: 0.4,
+            transform: "scale(0.7)",
+        }}
+    >
+        •
+    </Box>
+)
 
 const Movies: React.FC = () => {
     const { movieId } = useParams()
     const theme = useTheme()
     const [isFavorite, setIsFavorite] = useState(false)
     const dispatch = useAppDispatch()
-    const { loading, data: movieDetail } = useAppSelector(state => state.movieDetail)
+    const { loading, data: movieDetail } = useAppSelector(
+        (state) => state.movieDetail
+    )
 
     useEffect(() => {
         if (movieId) dispatch(fetchMovieDetail({ i: movieId }))
     }, [dispatch, movieId])
 
     if (loading) {
-        <Box
+        ;<Box
             sx={{
-                alignItems: 'center',
+                alignItems: "center",
                 color: theme.palette.primary.main,
-                display: 'flex',
+                display: "flex",
                 flex: 1,
-                flexDirection: 'column',
-                height: '100%',
-                justifyContent: 'center'
+                flexDirection: "column",
+                height: "100%",
+                justifyContent: "center",
             }}
-            >
-                <CircularProgress />
-                <Typography
-                    variant='subtitle1'
-                    color={theme.palette.success.main}
-                >
-                    Loading...
-                </Typography>
+        >
+            <CircularProgress />
+            <Typography variant="subtitle1" color={theme.palette.success.main}>
+                Loading...
+            </Typography>
         </Box>
     }
 
@@ -67,18 +65,25 @@ const Movies: React.FC = () => {
         return (
             <Box
                 sx={{
-                    alignItems: 'center',
+                    alignItems: "center",
                     color: theme.palette.primary.main,
-                    display: 'flex',
+                    display: "flex",
                     flex: 1,
-                    flexDirection: 'column',
-                    height: '100%',
-                    justifyContent: 'center'
+                    flexDirection: "column",
+                    height: "100%",
+                    justifyContent: "center",
                 }}
-            >        
+            >
                 <img src={EmptyStateImage} alt="Empty state" />
-                <Typography variant="h6" color={theme.palette.primary.main}>Don't know what to search?</Typography>
-                <Typography variant="subtitle1" color={theme.palette.primary.light}>Here's an offer you can't refuse</Typography>                
+                <Typography variant="h6" color={theme.palette.primary.main}>
+                    Don't know what to search?
+                </Typography>
+                <Typography
+                    variant="subtitle1"
+                    color={theme.palette.primary.light}
+                >
+                    Here's an offer you can't refuse
+                </Typography>
             </Box>
         )
     }
@@ -93,7 +98,7 @@ const Movies: React.FC = () => {
         Plot,
         Actors,
         Genre,
-        Director
+        Director,
     } = movieDetail
 
     return (
@@ -103,35 +108,30 @@ const Movies: React.FC = () => {
             columnSpacing={{ xs: 1, md: 2 }}
             sx={{
                 flex: 1,
-                minHeight: 500
+                minHeight: 500,
             }}
         >
-            <Grid
-                item
-                alignItems="flex-start"                
-                xs={6}
-                mt={4}
-            >
+            <Grid item alignItems="flex-start" xs={6} mt={4}>
                 <Box
                     sx={{
                         color: theme.palette.secondary.light,
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start"
+                        justifyContent: "flex-start",
                     }}
                 >
                     <Typography
                         variant="subtitle1"
                         color={theme.palette.secondary.light}
                     >
-                        {Runtime}            
+                        {Runtime}
                     </Typography>
                     {bull}
                     <Typography
                         variant="subtitle1"
                         color={theme.palette.secondary.light}
                     >
-                        {Year}            
+                        {Year}
                     </Typography>
                     {bull}
                     <Typography
@@ -144,7 +144,7 @@ const Movies: React.FC = () => {
                             paddingRight: theme.spacing(0.5),
                         }}
                     >
-                        {Rated}            
+                        {Rated}
                     </Typography>
                 </Box>
                 <Box mt={theme.spacing(4)}>
@@ -159,15 +159,19 @@ const Movies: React.FC = () => {
                     </Typography>
                 </Box>
                 <Box mt={theme.spacing(4)} display="flex" flexDirection="row">
-                    {Ratings.filter(rating => ['Internet Movie Database', 'Rotten Tomatoes'].includes(rating.Source)).map(({ Source, Value }) => {
-                        const isIMDB = Source === 'Internet Movie Database'
+                    {Ratings.filter((rating) =>
+                        ["Internet Movie Database", "Rotten Tomatoes"].includes(
+                            rating.Source
+                        )
+                    ).map(({ Source, Value }) => {
+                        const isIMDB = Source === "Internet Movie Database"
                         return (
                             <Box
                                 display="flex"
                                 flexDirection="row"
                                 alignItems="center"
                                 justifyContent="center"
-                                mr={theme.spacing(2)}    
+                                mr={theme.spacing(2)}
                                 pr={theme.spacing(1)}
                                 sx={{
                                     border: `1px solid ${theme.palette.secondary.light}`,
@@ -180,16 +184,25 @@ const Movies: React.FC = () => {
                                     sx={{
                                         borderTopLeftRadius: 4,
                                         borderBottomLeftRadius: 4,
-                                        backgroundColor: isIMDB ? theme.palette.warning.main : theme.palette.error.main
+                                        backgroundColor: isIMDB
+                                            ? theme.palette.warning.main
+                                            : theme.palette.error.main,
                                     }}
                                     mr={theme.spacing(1)}
                                 >
-                                    {
-                                        isIMDB ? <IMDBLogo fill={theme.palette.warning.main} />
-                                        : <RottenTomatoesLogo fill={theme.palette.error.main} />
-                                    }
+                                    {isIMDB ? (
+                                        <IMDBLogo
+                                            fill={theme.palette.warning.main}
+                                        />
+                                    ) : (
+                                        <RottenTomatoesLogo
+                                            fill={theme.palette.error.main}
+                                        />
+                                    )}
                                 </Box>
-                                <Typography color="primary" fontSize={14}>{Value}</Typography>
+                                <Typography color="primary" fontSize={14}>
+                                    {Value}
+                                </Typography>
                             </Box>
                         )
                     })}
@@ -198,49 +211,57 @@ const Movies: React.FC = () => {
                         flexDirection="row"
                         alignItems="center"
                         justifyContent="center"
-                        mr={theme.spacing(2)}    
+                        mr={theme.spacing(2)}
                         pr={theme.spacing(1)}
-                        sx={isFavorite ? {
-                            border: `1px solid ${theme.palette.secondary.light}`,
-                            backgroundColor: theme.palette.error.main,
-                            cursor: 'pointer',
-                            paddingLeft: theme.spacing(1)
-                        } : {
-                            border: `1px solid ${theme.palette.secondary.light}`,
-                            borderRadius: 4,
-                            '&:hover': {
-                                backgroundColor: theme.palette.error.main, 
-                                cursor: 'pointer'
-                            }
-                        }}
+                        sx={
+                            isFavorite
+                                ? {
+                                      border: `1px solid ${theme.palette.secondary.light}`,
+                                      backgroundColor: theme.palette.error.main,
+                                      cursor: "pointer",
+                                      paddingLeft: theme.spacing(1),
+                                  }
+                                : {
+                                      border: `1px solid ${theme.palette.secondary.light}`,
+                                      borderRadius: 4,
+                                      "&:hover": {
+                                          backgroundColor:
+                                              theme.palette.error.main,
+                                          cursor: "pointer",
+                                      },
+                                  }
+                        }
                         onClick={() => setIsFavorite(!isFavorite)}
                     >
-                        
                         <>
-                            {
-                                isFavorite ? (
-                                    <Typography color="primary" fontSize={14}>Added</Typography>
-                                ) : (
-                                    <>
-                                        <Box
-                                            display="flex"         
-                                            px={theme.spacing(1.5)}
-                                            mr={theme.spacing(1)}                            
-                                        >
-                                            <HeartIconSVG width={theme.spacing(2)} />
-                                        </Box>
-                                        <Typography color="primary" fontSize={14}>Add to favourites</Typography>
-                                    </>
-                                )
-                            }   
-                        </>                                             
+                            {isFavorite ? (
+                                <Typography color="primary" fontSize={14}>
+                                    Added
+                                </Typography>
+                            ) : (
+                                <>
+                                    <Box
+                                        display="flex"
+                                        px={theme.spacing(1.5)}
+                                        mr={theme.spacing(1)}
+                                    >
+                                        <HeartIconSVG
+                                            width={theme.spacing(2)}
+                                        />
+                                    </Box>
+                                    <Typography color="primary" fontSize={14}>
+                                        Add to favourites
+                                    </Typography>
+                                </>
+                            )}
+                        </>
                     </Box>
                 </Box>
                 <Box mt={theme.spacing(4)}>
                     <Typography
                         sx={{
-                            color: theme.palette.secondary.light
-                        }}    
+                            color: theme.palette.secondary.light,
+                        }}
                         fontSize={theme.spacing(2)}
                         letterSpacing={theme.spacing(0)}
                     >
@@ -259,7 +280,7 @@ const Movies: React.FC = () => {
                     container
                     display="flex"
                     flexDirection="row"
-                    mt={theme.spacing(2)}     
+                    mt={theme.spacing(2)}
                     spacing={2}
                 >
                     <Grid item flexDirection="column" xs={4}>
@@ -291,18 +312,15 @@ const Movies: React.FC = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid
-                item
-                xs={6}                
-            >
+            <Grid item xs={6}>
                 <Box
                     width={1}
                     height={1}
                     sx={{
                         backgroundImage: `url(${Poster})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'contain',
-                        margin: '0 auto'
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "contain",
+                        margin: "0 auto",
                     }}
                     maxWidth={300}
                 />
