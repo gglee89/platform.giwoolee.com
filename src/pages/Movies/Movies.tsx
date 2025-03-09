@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 
-// Actions
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { fetchMovieDetail } from "../../features/movieDetail/movieDetailSlice"
+// Services
+import { useMovieDetail, MovieDetail } from "../../services/api/api.service"
 
 // MUI
 import { Box, CircularProgress, Grid, Typography } from "@mui/material"
@@ -33,35 +32,33 @@ const Movies: React.FC = () => {
     const { movieId } = useParams()
     const theme = useTheme()
     const [isFavorite, setIsFavorite] = useState(false)
-    const dispatch = useAppDispatch()
-    const { loading, data: movieDetail } = useAppSelector(
-        (state) => state.movieDetail
-    )
+    const { data: movieDetail, isLoading, error } = useMovieDetail(movieId)
 
-    useEffect(() => {
-        if (movieId) dispatch(fetchMovieDetail({ i: movieId }))
-    }, [dispatch, movieId])
-
-    if (loading) {
-        ;<Box
-            sx={{
-                alignItems: "center",
-                color: theme.palette.primary.main,
-                display: "flex",
-                flex: 1,
-                flexDirection: "column",
-                height: "100%",
-                justifyContent: "center",
-            }}
-        >
-            <CircularProgress />
-            <Typography variant="subtitle1" color={theme.palette.success.main}>
-                Loading...
-            </Typography>
-        </Box>
+    if (isLoading) {
+        return (
+            <Box
+                sx={{
+                    alignItems: "center",
+                    color: theme.palette.primary.main,
+                    display: "flex",
+                    flex: 1,
+                    flexDirection: "column",
+                    height: "100%",
+                    justifyContent: "center",
+                }}
+            >
+                <CircularProgress />
+                <Typography
+                    variant="subtitle1"
+                    color={theme.palette.success.main}
+                >
+                    Loading...
+                </Typography>
+            </Box>
+        )
     }
 
-    if (!movieDetail) {
+    if (error || !movieDetail) {
         return (
             <Box
                 sx={{
@@ -76,7 +73,7 @@ const Movies: React.FC = () => {
             >
                 <img src={EmptyStateImage} alt="Empty state" />
                 <Typography variant="h6" color={theme.palette.primary.main}>
-                    Don't know what to search?
+                    {error ? "Error loading movie details" : "Movie not found"}
                 </Typography>
                 <Typography
                     variant="subtitle1"
@@ -99,7 +96,7 @@ const Movies: React.FC = () => {
         Actors,
         Genre,
         Director,
-    } = movieDetail
+    } = movieDetail as MovieDetail
 
     return (
         <Grid
@@ -167,6 +164,7 @@ const Movies: React.FC = () => {
                         const isIMDB = Source === "Internet Movie Database"
                         return (
                             <Box
+                                key={Source}
                                 display="flex"
                                 flexDirection="row"
                                 alignItems="center"
