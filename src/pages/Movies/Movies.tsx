@@ -2,17 +2,17 @@ import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 
 // Services
-import { useMovieDetail, MovieDetail } from "../../services/api/api.service"
+import { useMovieDetail, MovieDetail } from "@/services/api/api.service"
 
 // MUI
 import { Box, CircularProgress, Grid, Typography } from "@mui/material"
 import { useTheme } from "@mui/material/styles"
 
 // Assets
-import EmptyStateImage from "../../assets/illustrations/illustration-empty-state-min.png"
-import { ReactComponent as IMDBLogo } from "../../assets/logos/logo-imdb.svg"
-import { ReactComponent as RottenTomatoesLogo } from "../../assets/logos/logo-rotten-tomatoes.svg"
-import { ReactComponent as HeartIconSVG } from "../../assets/icons/icon-heart-white.svg"
+import EmptyStateImage from "@/assets/illustrations/illustration-empty-state-min.png"
+import IMDBLogo from "@/assets/logos/logo-imdb.svg?url"
+import RottenTomatoesLogo from "@/assets/logos/logo-rotten-tomatoes.svg?url"
+import HeartIconSVG from "@/assets/icons/icon-heart-white.svg?url"
 
 const bull = (
     <Box
@@ -189,12 +189,11 @@ const Movies: React.FC = () => {
                                     mr={theme.spacing(1)}
                                 >
                                     {isIMDB ? (
-                                        <IMDBLogo
-                                            fill={theme.palette.warning.main}
-                                        />
+                                        <img src={IMDBLogo} alt="IMDB" />
                                     ) : (
-                                        <RottenTomatoesLogo
-                                            fill={theme.palette.error.main}
+                                        <img
+                                            src={RottenTomatoesLogo}
+                                            alt="Rotten Tomatoes"
                                         />
                                     )}
                                 </Box>
@@ -243,7 +242,9 @@ const Movies: React.FC = () => {
                                         px={theme.spacing(1.5)}
                                         mr={theme.spacing(1)}
                                     >
-                                        <HeartIconSVG
+                                        <img
+                                            src={HeartIconSVG}
+                                            alt="Heart"
                                             width={theme.spacing(2)}
                                         />
                                     </Box>

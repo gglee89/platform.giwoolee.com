@@ -13,7 +13,13 @@ import Home from "./pages/Home"
 import Movies from "./pages/Movies"
 import NotFound from "./pages/NotFound"
 
-const theme = createTheme({
+// Router future flags
+const routerFutureConfig = {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true,
+}
+
+export const theme = createTheme({
     palette: {
         primary: {
             main: "#FFF", // White
@@ -50,7 +56,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
-                <BrowserRouter>
+                <BrowserRouter future={routerFutureConfig}>
                     <AppLayout>
                         <Routes>
                             <Route path="/" element={<Home />} />

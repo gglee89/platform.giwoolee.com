@@ -1,70 +1,73 @@
-import React from 'react'
+import React from "react"
 
 // MUI
-import { Box, Card, CardContent, IconButton, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Card, CardContent, IconButton, Typography } from "@mui/material"
+import { useTheme } from "@mui/material/styles"
 
 // Assets
-import { ReactComponent as HeartIconSVG } from '../../assets/icons/icon-heart-white.svg'
+import HeartIconSVG from "@/assets/icons/icon-heart-white.svg?url"
 
-// Interface
-import { Movie } from '../../features/movies/moviesSlice'
+interface CardBoxProps {
+    Title: string
+    Year: string
+    Poster: string
+    imdbID: string
+    Type: string
+}
 
-const CardBox: React.FC<Movie> = ({ Title, Year, Poster, imdbID, Type }) => {
-    const theme = useTheme();
+const CardBox: React.FC<CardBoxProps> = ({ Title, Year, Poster }) => {
+    const theme = useTheme()
 
     return (
-        <Box
-            width={1}
-            height={1}
-        >
-            <Card   
-                sx={{                                        
+        <Box width={1} height={1}>
+            <Card
+                sx={{
                     backgroundImage: `url(${Poster})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    border: 'none',
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    border: "none",
                     height: 450,
-                    '&:hover': {
+                    "&:hover": {
                         backgroundColor: theme.palette.primary.dark,
                         color: theme.palette.primary.main,
-                        cursor: 'pointer',
-                        '& > div': { visibility: 'visible' },
-                    }
+                        cursor: "pointer",
+                        "& > div": { visibility: "visible" },
+                    },
                 }}
-                variant="outlined">
+                variant="outlined"
+            >
                 <CardContent
                     sx={{
                         backgroundColor: theme.palette.primary.dark,
-                        boxSizing: 'border-box',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        height: '100%',
-                        opacity: 0.8,                        
+                        boxSizing: "border-box",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        height: "100%",
+                        opacity: 0.8,
                         padding: theme.spacing(1),
-                        width: '100%',
-                        visibility: 'hidden',
+                        width: "100%",
+                        visibility: "hidden",
                     }}
                 >
-                    <Box sx={{ textAlign: 'end' }}>
+                    <Box sx={{ textAlign: "end" }}>
                         <IconButton
                             sx={{
-                                '&:hover': {
-                                    backgroundColor: theme.palette.error.main
-                                }
+                                "&:hover": {
+                                    backgroundColor: theme.palette.error.main,
+                                },
                             }}
                         >
-                            <HeartIconSVG />
+                            <img
+                                src={HeartIconSVG}
+                                alt="Add to favorites"
+                                width={theme.spacing(2)}
+                            />
                         </IconButton>
                     </Box>
                     <Box>
-                        <Typography sx={{  mb: 1 }}>
-                            {Title}
-                        </Typography>
-                        <Typography variant="body1">
-                            {Year}
-                        </Typography>            
+                        <Typography sx={{ mb: 1 }}>{Title}</Typography>
+                        <Typography variant="body1">{Year}</Typography>
                     </Box>
                 </CardContent>
             </Card>
